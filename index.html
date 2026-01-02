@@ -2824,18 +2824,10 @@
 
         function resizeCanvas() {
             const containerW = container.clientWidth; const containerH = container.clientHeight;
-            
-            // --- TỐI ƯU MOBILE ---
-            const isMobile = window.innerWidth < 900;
-            // Ép độ phân giải về 1.0 trên mobile (thay vì dùng Retina x2/x3)
-            const dpr = isMobile ? 1 : (window.devicePixelRatio || 1);
-            
+            const dpr = window.devicePixelRatio || 1;
             canvas.width = Math.floor(containerW * dpr); canvas.height = Math.floor(containerH * dpr);
             canvas.style.width = containerW + 'px'; canvas.style.height = containerH + 'px';
-            
-            // Điều chỉnh scale game logic
             if (window.innerWidth < 600) { GAME_SCALE = 0.75; } else { GAME_SCALE = 1.0; }
-            
             VIEWPORT_W = containerW / GAME_SCALE; SCREEN_H = containerH / GAME_SCALE;
             clampCamera();
         }
@@ -3466,3 +3458,4 @@
 </body>
 
 </html>
+
